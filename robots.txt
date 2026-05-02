@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://cocokane.github.io/sitemap.xml
