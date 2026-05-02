@@ -1,4 +1,5 @@
 ---
+published: false
 layout: course
 title: Introduction to Machine Learning
 description: This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.
