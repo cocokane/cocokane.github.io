@@ -13,20 +13,21 @@
   <script src="./image-slot.js"></script>
   <style>
     html { scroll-behavior: smooth; }
-    body { margin: 0; background: #23262b; color: #e9ebee; font-family: var(--font-body, 'Lora', serif); }
+    body { margin: 0; background: linear-gradient(90deg, #191a1c 0%, #23262b 34%, #23262b 66%, #191a1c 100%); background-attachment: fixed; color: #e9ebee; font-family: var(--font-body, 'Lora', serif); }
     ::selection { background: rgba(182,130,53,0.35); }
     a { color: #cf9c4e; text-decoration: none; }
     a:hover { color: #e0b46a; }
     a:focus-visible { outline: 2px solid #b68235; outline-offset: 2px; }
     @keyframes sq-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes qm-drift { 0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0); } 50% { transform: rotate(var(--rot, 0deg)) translateY(-12px); } }
   </style>
 </helmet>
-<div style="min-height:100vh; background:#23262b; color:#e9ebee; font-family:var(--font-body,'Lora',serif); font-size:16px; line-height:1.75; overflow-x:hidden;" data-screen-label="Academic Site">
+<div style="min-height:100vh; background:transparent; color:#e9ebee; font-family:var(--font-body,'Lora',serif); font-size:16px; line-height:1.75; overflow-x:hidden;" data-screen-label="Academic Site">
   
   
   <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ false }}">
     <canvas ref="{{ gridRef }}" aria-hidden="true" style="position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0;"></canvas>
-  </sc-if>
+  </sc-if><div aria-hidden="true" style="position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0; display:none;"><svg viewBox="0 0 118 58" width="107" height="53" fill="none" stroke="#e0b46a" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-label="wave packet" style="position:absolute; right:calc(50% + 340px + 21px); top:84.6vh; opacity:0.22; --rot:-25deg; animation:qm-drift 29s ease-in-out -8s infinite;"><path d="M 4.0,28.3 L 5.7,28.2 L 7.4,28.0 L 9.2,27.7 L 10.9,27.5 L 12.6,27.2 L 14.3,26.8 L 16.0,26.4 L 17.8,25.9 L 19.5,25.4 L 21.2,24.8 L 22.9,24.2 L 24.6,23.5 L 26.3,22.7 L 28.1,21.9 L 29.8,21.0 L 31.5,20.1 L 33.2,19.1 L 34.9,18.1 L 36.7,17.1 L 38.4,16.0 L 40.1,15.0 L 41.8,14.0 L 43.5,13.0 L 45.2,12.1 L 47.0,11.2 L 48.7,10.4 L 50.4,9.7 L 52.1,9.1 L 53.8,8.6 L 55.6,8.3 L 57.3,8.1 L 59.0,8.0 L 60.7,8.1 L 62.4,8.3 L 64.2,8.6 L 65.9,9.1 L 67.6,9.7 L 69.3,10.4 L 71.0,11.2 L 72.8,12.1 L 74.5,13.0 L 76.2,14.0 L 77.9,15.0 L 79.6,16.0 L 81.3,17.1 L 83.1,18.1 L 84.8,19.1 L 86.5,20.1 L 88.2,21.0 L 89.9,21.9 L 91.7,22.7 L 93.4,23.5 L 95.1,24.2 L 96.8,24.8 L 98.5,25.4 L 100.2,25.9 L 102.0,26.4 L 103.7,26.8 L 105.4,27.2 L 107.1,27.5 L 108.8,27.7 L 110.6,28.0 L 112.3,28.2 L 114.0,28.3" opacity=".45" stroke-dasharray="3 4"/><path d="M 4.0,29.7 L 5.7,29.8 L 7.4,30.0 L 9.2,30.3 L 10.9,30.5 L 12.6,30.8 L 14.3,31.2 L 16.0,31.6 L 17.8,32.1 L 19.5,32.6 L 21.2,33.2 L 22.9,33.8 L 24.6,34.5 L 26.3,35.3 L 28.1,36.1 L 29.8,37.0 L 31.5,37.9 L 33.2,38.9 L 34.9,39.9 L 36.7,40.9 L 38.4,42.0 L 40.1,43.0 L 41.8,44.0 L 43.5,45.0 L 45.2,45.9 L 47.0,46.8 L 48.7,47.6 L 50.4,48.3 L 52.1,48.9 L 53.8,49.4 L 55.6,49.7 L 57.3,49.9 L 59.0,50.0 L 60.7,49.9 L 62.4,49.7 L 64.2,49.4 L 65.9,48.9 L 67.6,48.3 L 69.3,47.6 L 71.0,46.8 L 72.8,45.9 L 74.5,45.0 L 76.2,44.0 L 77.9,43.0 L 79.6,42.0 L 81.3,40.9 L 83.1,39.9 L 84.8,38.9 L 86.5,37.9 L 88.2,37.0 L 89.9,36.1 L 91.7,35.3 L 93.4,34.5 L 95.1,33.8 L 96.8,33.2 L 98.5,32.6 L 100.2,32.1 L 102.0,31.6 L 103.7,31.2 L 105.4,30.8 L 107.1,30.5 L 108.8,30.3 L 110.6,30.0 L 112.3,29.8 L 114.0,29.7" opacity=".45" stroke-dasharray="3 4"/><path d="M 4.0,28.4 L 5.7,28.3 L 7.4,28.9 L 9.2,30.0 L 10.9,30.5 L 12.6,29.7 L 14.3,27.9 L 16.0,26.4 L 17.8,27.0 L 19.5,29.9 L 21.2,32.9 L 22.9,33.0 L 24.6,29.3 L 26.3,24.1 L 28.1,22.1 L 29.8,26.2 L 31.5,33.9 L 33.2,38.9 L 34.9,35.7 L 36.7,25.7 L 38.4,16.8 L 40.1,17.4 L 41.8,28.6 L 43.5,41.7 L 45.2,45.2 L 47.0,34.8 L 48.7,18.3 L 50.4,9.7 L 52.1,17.1 L 53.8,35.1 L 55.6,48.7 L 57.3,46.0 L 59.0,29.0 L 60.7,12.0 L 62.4,9.3 L 64.2,22.9 L 65.9,40.9 L 67.6,48.3 L 69.3,39.7 L 71.0,23.2 L 72.8,12.8 L 74.5,16.3 L 76.2,29.4 L 77.9,40.6 L 79.6,41.2 L 81.3,32.3 L 83.1,22.3 L 84.8,19.1 L 86.5,24.1 L 88.2,31.8 L 89.9,35.9 L 91.7,33.9 L 93.4,28.7 L 95.1,25.0 L 96.8,25.1 L 98.5,28.1 L 100.2,31.0 L 102.0,31.6 L 103.7,30.1 L 105.4,28.3 L 107.1,27.5 L 108.8,28.0 L 110.6,29.1 L 112.3,29.7 L 114.0,29.6"/></svg><svg viewBox="0 0 126 64" width="125" height="63" fill="none" stroke="#e0b46a" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-label="EM wave" style="position:absolute; right:calc(50% + 340px + 87px); top:36.0vh; opacity:0.23; --rot:9deg; animation:qm-drift 29s ease-in-out -6s infinite;"><path d="M 6,32 L 120,32" opacity=".4" stroke-dasharray="2 5"/><path d="M 6.0,32.0 L 7.8,28.8 L 9.6,25.8 L 11.3,23.0 L 13.1,20.4 L 14.9,18.3 L 16.7,16.7 L 18.5,15.6 L 20.2,15.0 L 22.0,15.1 L 23.8,15.8 L 25.6,17.0 L 27.4,18.7 L 29.2,20.9 L 30.9,23.5 L 32.7,26.4 L 34.5,29.5 L 36.3,32.6 L 38.1,35.8 L 39.8,38.8 L 41.6,41.6 L 43.4,44.0 L 45.2,46.1 L 47.0,47.6 L 48.8,48.6 L 50.5,49.0 L 52.3,48.8 L 54.1,48.0 L 55.9,46.7 L 57.7,44.9 L 59.4,42.6 L 61.2,39.9 L 63.0,37.0 L 64.8,33.9 L 66.6,30.7 L 68.3,27.6 L 70.1,24.6 L 71.9,21.9 L 73.7,19.5 L 75.5,17.6 L 77.2,16.2 L 79.0,15.3 L 80.8,15.0 L 82.6,15.3 L 84.4,16.2 L 86.2,17.6 L 87.9,19.6 L 89.7,21.9 L 91.5,24.6 L 93.3,27.6 L 95.1,30.8 L 96.8,33.9 L 98.6,37.0 L 100.4,40.0 L 102.2,42.6 L 104.0,44.9 L 105.8,46.7 L 107.5,48.1 L 109.3,48.8 L 111.1,49.0 L 112.9,48.6 L 114.7,47.6 L 116.4,46.0 L 118.2,44.0 L 120.0,41.5"/><path d="M 6.0,24.5 L 7.8,24.6 L 9.6,25.0 L 11.3,25.6 L 13.1,26.5 L 14.9,27.5 L 16.7,28.7 L 18.5,30.1 L 20.2,31.4 L 22.0,32.8 L 23.8,34.2 L 25.6,35.5 L 27.4,36.7 L 29.2,37.7 L 30.9,38.5 L 32.7,39.1 L 34.5,39.4 L 36.3,39.5 L 38.1,39.3 L 39.8,38.9 L 41.6,38.2 L 43.4,37.3 L 45.2,36.2 L 47.0,35.0 L 48.8,33.7 L 50.5,32.3 L 52.3,30.9 L 54.1,29.5 L 55.9,28.2 L 57.7,27.1 L 59.4,26.1 L 61.2,25.4 L 63.0,24.8 L 64.8,24.5 L 66.6,24.5 L 68.3,24.8 L 70.1,25.2 L 71.9,26.0 L 73.7,26.9 L 75.5,28.0 L 77.2,29.3 L 79.0,30.6 L 80.8,32.0 L 82.6,33.4 L 84.4,34.7 L 86.2,36.0 L 87.9,37.1 L 89.7,38.0 L 91.5,38.8 L 93.3,39.2 L 95.1,39.5 L 96.8,39.5 L 98.6,39.2 L 100.4,38.6 L 102.2,37.9 L 104.0,36.9 L 105.8,35.7 L 107.5,34.5 L 109.3,33.1 L 111.1,31.7 L 112.9,30.3 L 114.7,29.0 L 116.4,27.8 L 118.2,26.7 L 120.0,25.8" opacity=".62"/><path d="M 120,32 l -7,-3.5 l 0,7 z" fill="#e0b46a" stroke="none" opacity=".8"/></svg><svg viewBox="0 0 86 74" width="72" height="62" fill="none" stroke="#e0b46a" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-label="p-orbital" style="position:absolute; right:calc(50% + 340px + 60px); top:53.6vh; opacity:0.28; --rot:-22deg; animation:qm-drift 30s ease-in-out -8s infinite;"><path d="M 43,37 C 25,30 25,6 43,4 C 61,6 61,30 43,37 Z"/><path d="M 43,37 C 25,44 25,68 43,70 C 61,68 61,44 43,37 Z" opacity=".62"/><path d="M 12,37 L 74,37" opacity=".4" stroke-dasharray="3 4"/></svg><svg viewBox="0 0 92 76" width="73" height="60" fill="none" stroke="#e0b46a" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-label="harmonic oscillator" style="position:absolute; left:calc(50% + 340px + 34px); top:73.0vh; opacity:0.2; --rot:-11deg; animation:qm-drift 26s ease-in-out -20s infinite;"><path d="M 12.0,61.5 L 13.1,58.1 L 14.1,54.8 L 15.2,51.6 L 16.2,48.5 L 17.3,45.5 L 18.4,42.6 L 19.4,39.9 L 20.5,37.2 L 21.6,34.7 L 22.6,32.2 L 23.7,29.9 L 24.8,27.7 L 25.8,25.6 L 26.9,23.6 L 27.9,21.7 L 29.0,19.9 L 30.1,18.2 L 31.1,16.6 L 32.2,15.2 L 33.2,13.8 L 34.3,12.6 L 35.4,11.4 L 36.4,10.4 L 37.5,9.5 L 38.6,8.7 L 39.6,8.0 L 40.7,7.4 L 41.8,6.9 L 42.8,6.5 L 43.9,6.2 L 44.9,6.1 L 46.0,6.0 L 47.1,6.1 L 48.1,6.2 L 49.2,6.5 L 50.2,6.9 L 51.3,7.4 L 52.4,8.0 L 53.4,8.7 L 54.5,9.5 L 55.6,10.4 L 56.6,11.4 L 57.7,12.6 L 58.8,13.8 L 59.8,15.2 L 60.9,16.6 L 61.9,18.2 L 63.0,19.9 L 64.1,21.7 L 65.1,23.6 L 66.2,25.6 L 67.2,27.7 L 68.3,29.9 L 69.4,32.2 L 70.4,34.7 L 71.5,37.2 L 72.6,39.9 L 73.6,42.6 L 74.7,45.5 L 75.8,48.5 L 76.8,51.6 L 77.9,54.8 L 78.9,58.1 L 80.0,61.5" opacity=".7"/><path d="M 13.7,56 L 78.3,56" opacity="0.75"/><path d="M 18.6,42 L 73.4,42" opacity="0.62"/><path d="M 24.6,28 L 67.4,28" opacity="0.49"/></svg><svg viewBox="0 0 88 78" width="77" height="68" fill="none" stroke="#e0b46a" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-label="double slit" style="position:absolute; left:calc(50% + 340px + 15px); top:25.8vh; opacity:0.22; --rot:-18deg; animation:qm-drift 34s ease-in-out -11s infinite;"><path d="M 20,6 L 20,28"/><path d="M 20,36 L 20,42"/><path d="M 20,50 L 20,72"/><path d="M 34,32 A 14,14 0 0 1 20,46" opacity="0.62"/><path d="M 34,46 A 14,14 0 0 0 20,32" opacity="0.62"/><path d="M 46,32 A 26,26 0 0 1 20,58" opacity="0.51"/><path d="M 46,46 A 26,26 0 0 0 20,20" opacity="0.51"/><path d="M 58,32 A 38,38 0 0 1 20,70" opacity="0.40"/><path d="M 58,46 A 38,38 0 0 0 20,8" opacity="0.40"/><path d="M 70,32 A 50,50 0 0 1 20,82" opacity="0.29"/><path d="M 70,46 A 50,50 0 0 0 20,-4" opacity="0.29"/></svg><svg viewBox="0 0 74 74" width="66" height="66" fill="none" stroke="#e0b46a" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-label="Bloch sphere" style="position:absolute; right:calc(50% + 340px + 117px); top:20.4vh; opacity:0.29; --rot:8deg; animation:qm-drift 26s ease-in-out -13s infinite;"><circle cx="37" cy="37" r="30"/><ellipse cx="37" cy="37" rx="30" ry="10" opacity=".5"/><path d="M 37,7 L 37,67" opacity=".35" stroke-dasharray="3 4"/><path d="M 37,37 L 56,20"/><path d="M 56,20 l -8,1.5 l 4.5,4.5 z" fill="#e0b46a" stroke="none"/></svg><svg viewBox="0 0 96 62" width="84" height="55" fill="none" stroke="#e0b46a" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-label="particle in a box" style="position:absolute; left:calc(50% + 340px + 59px); top:57.8vh; opacity:0.25; --rot:24deg; animation:qm-drift 34s ease-in-out -4s infinite;"><path d="M 12,6 L 12,56"/><path d="M 84,6 L 84,56"/><path d="M 12,56 L 84,56" opacity=".45"/><path d="M 12.0,34.0 L 13.1,31.8 L 14.2,29.7 L 15.4,27.6 L 16.5,25.6 L 17.6,23.6 L 18.8,21.8 L 19.9,20.0 L 21.0,18.4 L 22.1,17.0 L 23.2,15.7 L 24.4,14.6 L 25.5,13.7 L 26.6,12.9 L 27.8,12.4 L 28.9,12.1 L 30.0,12.0 L 31.1,12.1 L 32.2,12.4 L 33.4,12.9 L 34.5,13.7 L 35.6,14.6 L 36.8,15.7 L 37.9,17.0 L 39.0,18.4 L 40.1,20.0 L 41.2,21.8 L 42.4,23.6 L 43.5,25.6 L 44.6,27.6 L 45.8,29.7 L 46.9,31.8 L 48.0,34.0 L 49.1,36.2 L 50.2,38.3 L 51.4,40.4 L 52.5,42.4 L 53.6,44.4 L 54.8,46.2 L 55.9,48.0 L 57.0,49.6 L 58.1,51.0 L 59.2,52.3 L 60.4,53.4 L 61.5,54.3 L 62.6,55.1 L 63.8,55.6 L 64.9,55.9 L 66.0,56.0 L 67.1,55.9 L 68.2,55.6 L 69.4,55.1 L 70.5,54.3 L 71.6,53.4 L 72.8,52.3 L 73.9,51.0 L 75.0,49.6 L 76.1,48.0 L 77.2,46.2 L 78.4,44.4 L 79.5,42.4 L 80.6,40.4 L 81.8,38.3 L 82.9,36.2 L 84.0,34.0"/></svg></div>
   <nav style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 32px; height:60px; background:rgba(35,38,43,0.92); backdrop-filter:blur(8px); border-bottom:1px solid rgba(233,235,238,0.14);">
     <div style="display:flex; align-items:center; gap:18px;">
       <a href="https://github.com/cocokane" target="_blank" rel="noopener" title="GitHub" style="color:#9aa1aa; display:flex;" style-hover="color:#e0b46a;">
@@ -57,7 +58,7 @@
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform 0.25s;"><path d="m6 9 6 6 6-6"></path></svg>
         </button>
         <sc-if value="{{ sqOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="position:absolute; top:100%; right:0; margin-top:14px; width:300px; background:#2a2e34; border:1px solid rgba(233,235,238,0.16); box-shadow:0 12px 32px rgba(0,0,0,0.4); padding:18px 20px; animation:sq-in 0.22s ease-out; text-transform:none; letter-spacing:normal;"><div aria-hidden="true" style="position:absolute; top:-14px; left:0; right:0; height:14px;"></div>
+          <div style="position:absolute; top:100%; right:0; margin-top:14px; width:404px; background:#2a2e34; border:1px solid rgba(233,235,238,0.16); box-shadow:0 12px 32px rgba(0,0,0,0.4); padding:18px 20px; animation:sq-in 0.22s ease-out; text-transform:none; letter-spacing:normal;"><div aria-hidden="true" style="position:absolute; top:-14px; left:0; right:0; height:14px;"></div>
             <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#9aa1aa; border-bottom:1px solid rgba(233,235,238,0.14); padding-bottom:10px; margin-bottom:12px;">Stuff I do for fun</div>
             <div style="display:grid; gap:14px; font-family:var(--font-body,'Lora',serif);">
               <div>
@@ -75,7 +76,7 @@
             </div>
             <div style="display:flex; gap:18px; border-top:1px solid rgba(233,235,238,0.14); padding-top:12px; margin-top:14px; font-size:13px; letter-spacing:0.05em;">
               <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-              <a href="https://www.quora.com/" target="_blank" rel="noopener">Quora</a>
+              <a href="https://www.quora.com/profile/Yash-Kokane" target="_blank" rel="noopener">Quora (when it used to be good)</a>
             </div>
           </div>
         </sc-if>
@@ -87,7 +88,7 @@
       <image-slot id="portrait" shape="rect" style="width:170px; height:210px; flex:none; border:1px solid rgba(233,235,238,0.2); padding:0;" placeholder="Drop your photo"></image-slot>
       <div style="min-width:0;">
         <h1 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:42px; line-height:1.1; margin:0 0 4px; color:#f2f4f6;">Yash Kokane</h1>
-        <p style="margin:0 0 18px; text-align:justify; color:#d3d7dc;">Second-year Ph.D. student in Materials Science Engineering at Rensselaer Polytechnic Institute.<br>Member of the <a href="https://abinitiomp.org/" target="_blank" rel="noopener" class="scp1" style="color: rgb(224, 180, 106); text-decoration: none;"><i>Ab initio</i> multi-physics research group</a> led by <a href="https://abinitiomp.org/people/" target="_blank" rel="noopener" class="scp1" style="color: rgb(224, 180, 106); text-decoration: none;">Dr. Ravishankar Sundararaman</a>.</p>
+        <p style="margin:0 0 18px; text-align:justify; color:#d3d7dc;">Second-year Ph.D. student in Materials Science Engineering at Rensselaer Polytechnic Institute.<br>Member of the <a href="https://abinitiomp.org/" target="_blank" rel="noopener" class="scp1" style="color: rgb(224, 180, 106); text-decoration: none;"><i>Ab initio</i> multi-physics research group</a> led by <a href="https://abinitiomp.org/people/" target="_blank" rel="noopener" class="scp1" style="color: rgb(224, 180, 106); text-decoration: none;">Dr. Ravishankar Sundararaman</a>.</p><p style="margin:0 0 18px; text-align:justify; color:#d3d7dc;">Welcome to my page!</p>
         <div style="display:flex; flex-wrap:wrap; gap:8px 20px; font-size:14px; letter-spacing:0.04em;">
           <a href="mailto:kokany@rpi.edu">Email</a>
           <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
@@ -96,12 +97,12 @@
         </div>
       </div>
     </header>
-    <section id="research" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="Research Interests">
+    <section id="research" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="Research Interests">
       <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
-        <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">I.</span></sc-if>Research Interests</h2>
+        <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">I.</span></sc-if>My Research Interests</h2>
         <div style="display:grid; gap:20px;">
           <div style="display:grid; grid-template-columns:180px 1fr; gap:16px;">
-            <div style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:19px; color:#e0b46a;">Electronic structure</div><p style="margin: 0; text-align: justify; color: #d3d7dc; font-size: 15px; font-style: normal">Using and developing First-Principles methods (primarily DFT) to understand exactly<i> how</i> materials work.</p>
+            <div style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:19px; color:#e0b46a;">Electronic structure</div><p style="margin: 0; text-align: justify; color: #d3d7dc; font-size: 15px; font-style: normal">Using and developing First-Principles methods (primarily DFT) to understand exactly<i> how</i> materials work. My lab primarily uses <a href="https://jdftx.org/" target="_blank" rel="noopener">JDFTx</a> and <a href="https://qimpy.org/" target="_blank" rel="noopener">QimPy</a> for these calculations (we also develop them in-house).</p>
             
           </div>
           <div style="display:grid; grid-template-columns:180px 1fr; gap:16px;">
@@ -110,12 +111,16 @@
           </div>
           <div style="display:grid; grid-template-columns:180px 1fr; gap:16px;">
             <div style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:19px; color:#e0b46a;">ML for materials</div>
-            <p style="margin:0; text-align:justify; color:#d3d7dc; font-size:15px;">Developing Machine-learned interatomic potentials and screening tools for high-throughput materials discovery.</p>
+            <p style="margin:0; text-align:justify; color:#d3d7dc; font-size:15px;">Developing Machine-learned interatomic potentials and screening tools for high-throughput materials discovery. Previously used MACE, DeepMD and MTP among others for exploring <a href="https://github.com/cocokane/CantorAlloyMLIP" target="_blank" rel="noopener">HEAs</a> and screening interconnect materials.</p>
+          </div>
+          <div style="display:grid; grid-template-columns:180px 1fr; gap:16px;">
+            <div style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:19px; color:#e0b46a;">Deep Learning</div>
+            <p style="margin:0; text-align:justify; color:#d3d7dc; font-size:15px;">Always interested in working on fun, creative projects with Deep Learning. Previously worked on analysing Javelin throw videos to predict distance, <a href="https://github.com/cocokane/CycleGAN_Nanoflower_colourization" target="_blank" rel="noopener">colorizing SEM images with fun color themes</a>, and <a href="https://www.kaggle.com/competitions/molecular-property-prediction-challenge" target="_blank" rel="noopener">arranging ML hackathons</a>.</p>
           </div>
         </div>
       </div>
     </section>
-    <section id="publications" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="Publications">
+    <section id="publications" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="Publications">
       <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
         <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">II.</span></sc-if>Publications</h2>
         <div style="display:grid; gap:24px;">
@@ -147,7 +152,7 @@
       </div>
     </section>
     <sc-if value="{{ showProjects }}" hint-placeholder-val="{{ true }}">
-      <section id="projects" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="Projects">
+      <section id="projects" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="Projects">
         <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
           <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">III.</span></sc-if>Projects</h2>
           <div style="display:grid; gap:18px;">
@@ -167,7 +172,7 @@
         </div>
       </section>
     </sc-if>
-    <section id="cv" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="CV">
+    <section id="cv" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="CV">
       <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
         <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">{{ cvNum }}</span></sc-if>Curriculum Vitae</h2>
         <div style="display:grid; gap:14px; margin-bottom:24px;">
@@ -183,7 +188,7 @@
         <a href="Yash_Kokane_CV.pdf" download="Yash_Kokane_CV.pdf" style="display:inline-block; border:1px solid #b68235; color:#e0b46a; padding:10px 22px; font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:15px; letter-spacing:0.08em; text-transform:uppercase;" style-hover="background:rgba(182,130,53,0.12); color:#e0b46a;">Download CV (PDF)</a>
       </div>
     </section>
-    <section id="contact" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="Contact">
+    <section id="contact" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="Contact">
       <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
         <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">{{ contactNum }}</span></sc-if>Contact</h2>
         <div style="display:grid; gap:8px; font-size:15px; color:#d3d7dc;">
@@ -249,12 +254,12 @@ class Component extends DCLogic {
           // fade out smoothly under the text column and under the header
           const colFade = smooth((Math.abs(x - cx) - half) / 150);
           const topFade = smooth((y - 72) / 90);
-          const a = (0.10 + 0.32 * v) * colFade * topFade;
+          const a = (0.17 + 0.50 * v) * colFade * topFade;
           if (a > 0.004) {
             ctx.fillStyle = 'rgba(159,180,208,' + a + ')';
             ctx.fillRect(x - 0.7, y - 0.7, 1.4, 1.4);
             if (prev && prev.a > 0.004) {
-              ctx.strokeStyle = 'rgba(159,180,208,' + a * 0.35 + ')';
+              ctx.strokeStyle = 'rgba(159,180,208,' + a * 0.46 + ')';
               ctx.lineWidth = 0.5;
               ctx.beginPath(); ctx.moveTo(prev.x, prev.y); ctx.lineTo(x, y); ctx.stroke();
             }

@@ -13,14 +13,14 @@
   <script src="./image-slot.js"></script>
   <style>
     html { scroll-behavior: smooth; }
-    body { margin: 0; background: #23262b; color: #e9ebee; font-family: var(--font-body, 'Lora', serif); }
+    body { margin: 0; background: linear-gradient(90deg, #191a1c 0%, #23262b 34%, #23262b 66%, #191a1c 100%); background-attachment: fixed; color: #e9ebee; font-family: var(--font-body, 'Lora', serif); }
     ::selection { background: rgba(182,130,53,0.35); }
     a { color: #cf9c4e; text-decoration: none; }
     a:hover { color: #e0b46a; }
     a:focus-visible { outline: 2px solid #b68235; outline-offset: 2px; }
   </style>
 </helmet>
-<div style="min-height:100vh; background:#23262b; color:#e9ebee; font-family:var(--font-body,'Lora',serif); font-size:16px; line-height:1.75;" data-screen-label="Academic Site">
+<div style="min-height:100vh; background:transparent; color:#e9ebee; font-family:var(--font-body,'Lora',serif); font-size:16px; line-height:1.75;" data-screen-label="Academic Site">
   <nav style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 32px; height:60px; background:rgba(35,38,43,0.92); backdrop-filter:blur(8px); border-bottom:1px solid rgba(233,235,238,0.14);">
     <div style="display:flex; align-items:center; gap:18px;">
       <a href="https://github.com/cocokane" target="_blank" rel="noopener" title="GitHub" style="color:#9aa1aa; display:flex;" style-hover="color:#e0b46a;">
@@ -62,9 +62,9 @@
         </div>
       </div>
     </header>
-    <section id="research" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="Research Interests">
+    <section id="research" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="Research Interests">
       <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
-        <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">I.</span></sc-if>Research Interests</h2>
+        <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">I.</span></sc-if>My Research Interests</h2>
         <div style="display:grid; gap:20px;">
           <div style="display:grid; grid-template-columns:180px 1fr; gap:16px;">
             <div style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:19px; color:#e0b46a;">Electronic structure</div>
@@ -76,12 +76,16 @@
           </div>
           <div style="display:grid; grid-template-columns:180px 1fr; gap:16px;">
             <div style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:19px; color:#e0b46a;">ML for materials</div>
-            <p style="margin:0; text-align:justify; color:#d3d7dc; font-size:15px;">Machine-learned interatomic potentials and screening models that accelerate high-throughput materials discovery.</p>
+            <p style="margin:0; text-align:justify; color:#d3d7dc; font-size:15px;">Machine-learned interatomic potentials and screening models that accelerate high-throughput materials discovery. Previously used MACE, DeepMD and MTP among others for exploring <a href="https://github.com/cocokane/CantorAlloyMLIP" target="_blank" rel="noopener">HEAs</a> and screening interconnect materials.</p>
+          </div>
+          <div style="display:grid; grid-template-columns:180px 1fr; gap:16px;">
+            <div style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:19px; color:#e0b46a;">Deep Learning</div>
+            <p style="margin:0; text-align:justify; color:#d3d7dc; font-size:15px;">Always interested in working on fun, creative projects with Deep Learning. Previously worked on analysing Javelin throw videos to predict distance, <a href="https://github.com/cocokane/CycleGAN_Nanoflower_colourization" target="_blank" rel="noopener">colorizing SEM images with fun color themes</a>, and <a href="https://www.kaggle.com/competitions/molecular-property-prediction-challenge" target="_blank" rel="noopener">arranging ML hackathons</a>.</p>
           </div>
         </div>
       </div>
     </section>
-    <section id="publications" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="Publications">
+    <section id="publications" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="Publications">
       <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
         <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">II.</span></sc-if>Publications</h2>
         <div style="display:grid; gap:24px;">
@@ -113,7 +117,7 @@
       </div>
     </section>
     <sc-if value="{{ showProjects }}" hint-placeholder-val="{{ true }}">
-      <section id="projects" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="Projects">
+      <section id="projects" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="Projects">
         <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
           <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">III.</span></sc-if>Projects</h2>
           <div style="display:grid; gap:18px;">
@@ -133,7 +137,7 @@
         </div>
       </section>
     </sc-if>
-    <section id="cv" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="CV">
+    <section id="cv" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="CV">
       <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
         <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">IV.</span></sc-if>Curriculum Vitae</h2>
         <div style="display:grid; gap:14px; margin-bottom:24px;">
@@ -149,7 +153,7 @@
         <a href="Yash_Kokane_CV.pdf" download="Yash_Kokane_CV.pdf" style="display:inline-block; border:1px solid #b68235; color:#e0b46a; padding:10px 22px; font-family:var(--font-heading,'Cormorant Garamond',serif); font-size:15px; letter-spacing:0.08em; text-transform:uppercase;" style-hover="background:rgba(182,130,53,0.12); color:#e0b46a;">Download CV (PDF)</a>
       </div>
     </section>
-    <section id="contact" style="scroll-margin-top:80px; margin-top:72px;" data-screen-label="Contact">
+    <section id="contact" style="scroll-margin-top:80px; margin-top:40px;" data-screen-label="Contact">
       <div style="border-top:1px solid rgba(233,235,238,0.14); padding-top:28px;">
         <h2 style="font-family:var(--font-heading,'Cormorant Garamond',serif); font-weight:500; font-size:28px; margin:0 0 24px; color:#f2f4f6;"><sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="color:#b68235; font-feature-settings:'tnum'; margin-right:14px;">V.</span></sc-if>Contact</h2>
         <div style="display:grid; gap:8px; font-size:15px; color:#d3d7dc;">
