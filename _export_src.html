@@ -273,28 +273,61 @@ class Component extends DCLogic {
   }
   componentDidMount() {
     if ((this.props.orcidSync ?? true) === false) return;
-    fetch('https://api.openalex.org/works?filter=author.orcid:0009-0008-7191-0673&sort=publication_year:desc&per-page=25')
+    fetch('https://pub.orcid.org/v3.0/0009-0008-7191-0673/works', { headers: { Accept: 'application/json' } })
       .then(r => r.ok ? r.json() : null)
       .then(data => {
-        if (!data || !Array.isArray(data.results) || data.results.length === 0) return;
-        const pubs = data.results.map(w => {
-          const names = (w.authorships || []).map(a => (a.author && a.author.display_name) || '');
-          const authorsEl = React.createElement('span', null, names.map((n, i) => [
-            /kokane/i.test(n)
-              ? React.createElement('strong', { key: i, style: { color: '#d3d7dc', fontWeight: 600 } }, n)
-              : React.createElement('span', { key: i }, n),
-            i < names.length - 1 ? ', ' : '',
-          ]));
-          const src = w.primary_location && w.primary_location.source;
-          return {
-            title: w.display_name,
-            year: w.publication_year,
-            venue: (src && src.display_name) || 'Preprint',
-            doiUrl: w.doi || null,
-            authorsEl,
-          };
+        const mkAuthors = (names) => React.createElement('span', null, names.map((n, i) => [
+          /kokane/i.test(n)
+            ? React.createElement('strong', { key: i, style: { color: '#d3d7dc', fontWeight: 600 } }, n)
+            : React.createElement('span', { key: i }, n),
+          i < names.length - 1 ? ', ' : '',
+        ]));
+        const entries = [];
+        (((data || {}).group) || []).forEach(g => {
+          const s = ((g || {})['work-summary'] || [])[0];
+          if (!s) return;
+          let doi = null;
+          ((((s['external-ids'] || {})['external-id']) || [])).forEach(e => {
+            if (String((e || {})['external-id-type'] || '').toLowerCase() === 'doi') {
+              doi = String(e['external-id-value'] || '').toLowerCase();
+            }
+          });
+          entries.push({
+            doi: doi,
+            title: (((s.title || {}).title) || {}).value || '',
+            year: Number(((((s['publication-date'] || {}).year) || {}).value)) || null,
+            venue: ((s['journal-title'] || {}).value) || 'Preprint',
+          });
         });
-        this.setState({ livePubs: pubs });
+        if (!entries.length) return;
+        const finish = (byDoi) => {
+          const pubs = entries.map(e => {
+            const w = e.doi ? byDoi[e.doi] : null;
+            const names = w ? (w.authorships || []).map(a => (a.author && a.author.display_name) || '') : [];
+            const src = w && w.primary_location && w.primary_location.source;
+            return {
+              title: (w && w.display_name) || e.title,
+              year: (w && w.publication_year) || e.year,
+              venue: (src && src.display_name) || e.venue,
+              doiUrl: e.doi ? 'https://doi.org/' + e.doi : null,
+              authorsEl: names.length ? mkAuthors(names) : null,
+            };
+          }).sort((a, b) => (b.year || 0) - (a.year || 0));
+          this.setState({ livePubs: pubs });
+        };
+        const dois = entries.map(e => e.doi).filter(Boolean);
+        if (!dois.length) { finish({}); return; }
+        fetch('https://api.openalex.org/works?per-page=50&filter=doi:' + dois.join('|'))
+          .then(r => r.ok ? r.json() : null)
+          .then(oa => {
+            const byDoi = {};
+            (((oa || {}).results) || []).forEach(w => {
+              const d = String(w.doi || '').replace('https://doi.org/', '').toLowerCase();
+              if (d) byDoi[d] = w;
+            });
+            finish(byDoi);
+          })
+          .catch(() => finish({}));
       })
       .catch(() => {});
   }
