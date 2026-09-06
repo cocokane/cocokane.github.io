@@ -133,8 +133,11 @@ to overlap `main`.
       the old CV. Still worth another pass: the new CV is headed "Dual Major Undergraduate
       at IIT Gandhinagar" with education "2020 – Present", which contradicts the site's
       "Second-year Ph.D. student at RPI" and the 2020 – 2025 education row.
-- [ ] Instagram link in the Sidequests menu still points at the generic
-      `instagram.com/` homepage — fix or drop it.
+- [x] Instagram link now points at `instagram.com/yash__kokane/`. (Same bug class as the
+      Quora and Google Scholar links, which were also bare homepages — all three fixed.)
+      Header link row trimmed to GitHub / Google Scholar / LinkedIn / Email; CV dropped from
+      both that row and the top nav (the CV section's download button remains). Sidequests
+      lost its "Stuff I do for fun" kicker; Quora reads "back when it was good".
 - [ ] Decide whether the QM glyphs come back (see above), and if so port them into the
       Claude Design source so they survive a re-export.
 - [ ] `uploads/` still holds ~5 MB of screenshots; several look unused by the page.
