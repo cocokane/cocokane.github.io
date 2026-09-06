@@ -83,6 +83,23 @@ Working notes for `cocokane.github.io`. The site is a static Claude Design expor
   To re-frame: pick a new crop box on the original at 0.8095 aspect and re-encode. Headroom
   is just the top edge of the box.
 
+**Mobile layout** (≤760px). The page is all inline styles with no classes, so the
+responsive rules live in one `@media (max-width: 760px)` block in the helmet `<style>` and
+hook elements with **attribute-substring selectors** on the `style` attribute, e.g.
+`div[style*='grid-template-columns: 180px']`. Every rule needs `!important` to beat the
+inline value. Two gotchas:
+- The rendered DOM serialises inline styles *with* spaces (`grid-template-columns: 180px`)
+  while the source has none, so each selector lists both forms.
+- Headless Chrome clamps every mode to a 500px minimum viewport, so `--window-size=390`
+  silently tests at 500. To test a real phone width, load the page inside a 390px
+  `<iframe>` (with `--allow-file-access-from-files` to read results back out).
+What the block does: nav wraps and centres (height auto); `main` top padding raised to
+128px to clear the taller nav; header stacks (`flex-direction: column`); h1 42→34px,
+h2 28→24px; justified paragraphs go left-aligned (rivers at narrow measure); the 180px and
+110px label columns collapse to one column; the Sidequests menu re-parents to the nav
+(`position: static` on its wrapper) and anchors `left:14px; right:14px` so it can never
+leave the viewport.
+
 ---
 
 ## Hidden — quantum-mechanics background glyphs
