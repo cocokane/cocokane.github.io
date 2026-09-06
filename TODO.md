@@ -100,6 +100,19 @@ h2 28→24px; justified paragraphs go left-aligned (rivers at narrow measure); t
 (`position: static` on its wrapper) and anchors `left:14px; right:14px` so it can never
 leave the viewport.
 
+**Analytics — GoatCounter** (site code `cocokane`, dashboard at
+https://cocokane.goatcounter.com). One tag, last thing in the page template body:
+`<script data-goatcounter="https://cocokane.goatcounter.com/count" async src="https://gc.zgo.at/count.js">`.
+Why *there*: the bundled `index.html` parses its template with `DOMParser`, swaps it in with
+`replaceWith`, then re-creates every `<script>` (copying attributes) and awaits each `src`
+script's `onload`/`onerror` **in document order**. A tag in the outer shell `<head>` would be
+discarded by the swap; a tag placed before the component script would delay the app until
+count.js loaded. Placed last, it can't block anything, and an adblocker just resolves
+through `onerror`. It lives in `index.html` and `_export_src.html` only — not the
+`.dc.html` canvases, which would count design-tool views as visits. count.js does not
+count `localhost`/`file://` by default, so local previews stay out of the numbers. It shows
+aggregate visits, referrers and countries — never individual identities.
+
 ---
 
 ## Hidden — quantum-mechanics background glyphs
